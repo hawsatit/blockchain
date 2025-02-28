@@ -55,8 +55,10 @@ public final class Block {
         MessageDigest md = MessageDigest.getInstance("sha-256");
         long testNonce = 0;
         
-        while(this.hash.isValid() == false){
-            ByteBuffer buffer = ByteBuffer.allocate(4).putInt(this.num).putInt(this.data).putLong(testNonce);
+        this.hash = new Hash(new byte[32]);
+        
+        while(!this.hash.isValid()){
+            ByteBuffer buffer = ByteBuffer.allocate(1000).putInt(this.num).putInt(this.data).putLong(testNonce);
             
             if (this.prev != null) {
                 buffer.put(this.prev.getData());
@@ -64,6 +66,7 @@ public final class Block {
             
             md.update(buffer.array());
             this.hash = new Hash(md.digest());
+            testNonce++;
         }
         
         return testNonce;
@@ -76,7 +79,7 @@ public final class Block {
      */
     public Hash convertHash() throws NoSuchAlgorithmException{
         MessageDigest md = MessageDigest.getInstance("sha-256");
-        ByteBuffer buffer = ByteBuffer.allocate(4).putInt(this.num).putInt(this.data).putLong(this.nonce);
+        ByteBuffer buffer = ByteBuffer.allocate(1000).putInt(this.num).putInt(this.data).putLong(this.nonce);
         
         
         if (this.prev != null) {
