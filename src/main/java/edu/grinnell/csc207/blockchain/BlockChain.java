@@ -34,7 +34,7 @@ public class BlockChain {
      * @throws NoSuchAlgorithmException
      */
     public BlockChain(int initial) throws NoSuchAlgorithmException {
-        this.first = new Node(new Block(initial, 0, null), null);
+        this.first = new Node(new Block(0, initial, null), null);
         this.last = this.first;
         this.size = 1;
     }
