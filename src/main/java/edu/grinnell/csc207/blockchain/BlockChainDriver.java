@@ -37,7 +37,7 @@ public class BlockChainDriver {
                     case "append" -> {
                         System.out.print("Ammount Transfered? ");
                         int amm = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Ammount Transfered? ");
+                        System.out.print("Nonce? ");
                         long nonce = Long.parseLong(scanner.nextLine());
                         chain.append(new Block(chain.getSize() + 1, amm, chain.last.block.getHash(), nonce));
                         }
