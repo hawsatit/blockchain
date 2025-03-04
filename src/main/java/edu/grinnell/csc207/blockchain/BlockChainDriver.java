@@ -22,6 +22,7 @@ public class BlockChainDriver {
             
             boolean running = true;
             while(running){
+                System.out.println();
                 System.out.println(chain.toString());
                 Scanner scanner = new Scanner(System.in);
                 System.out.print("Command? ");
