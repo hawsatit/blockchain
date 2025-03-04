@@ -39,7 +39,9 @@ public class BlockChainDriver {
                         int amm = Integer.parseInt(scanner.nextLine());
                         System.out.print("Nonce? ");
                         long nonce = Long.parseLong(scanner.nextLine());
-                        chain.append(new Block(chain.getSize() + 1, amm, chain.last.block.getHash(), nonce));
+                        Block newBlock = new Block(chain.getSize(), amm, chain.last.block.getHash(), nonce);
+                        newBlock.mine();
+                        chain.append(newBlock);
                         }
                     case "remove" -> chain.removeLast();
                     case "check" -> {
