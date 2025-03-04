@@ -70,7 +70,7 @@ public class BlockChain {
             }
             this.size++;
         } else {
-            throw new IllegalArgumentException("compatible  block!");
+            throw new IllegalArgumentException("incompatible  block!");
         }
 
     }
