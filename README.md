@@ -7,17 +7,31 @@ Authors: Tanadanai (Fui) Hawsatitam
 *   Apache Netbeans IDE
 *   Java version 23.0.2
 *   https://osera.cs.grinnell.edu/ttap/data-structures-labs/block-chain.html
+*   https://junit.org/junit5/docs/current/user-guide/ -- learned to use assertThrows
 
 ## Changelog
 
-commit ec3b9054387b6d5a3b2ec2bb3cb33e4ce8e34d40 (HEAD -> main, origin/main, origin/HEAD)
+fui@fui-ubuntu:~/Documents/csc207/blockchain$ git log
+commit 7c921649f85ed8a9492dfa4a3a272dd5c342b733 (HEAD -> main, origin/main, origin/HEAD)
 Author: fui <fui@fui-ubuntu>
-Date:   Mon Mar 3 18:50:34 2025 -0600
+Date:   Mon Mar 10 15:05:40 2025 -0500
 
-    fixed append block problem
+    Created tests
 
-commit 719c5ad144a0d8e1b2528777b88eab2629ba34ba
-Author: fui <fui@fui-ubuntu>
+commit 5297c2ce808cb50f8692bbee6c9eb1a607065f7e
+Author: fui <fui@fui-ubuntu>                                                                                                                                    
+Date:   Mon Mar 3 18:53:29 2025 -0600                                                                                                                           
+                                                                                                                                                                
+    updated readme                                                                                                                                              
+                                                                                                                                                                
+commit ec3b9054387b6d5a3b2ec2bb3cb33e4ce8e34d40                                                                                                                 
+Author: fui <fui@fui-ubuntu>                                                                                                                                    
+Date:   Mon Mar 3 18:50:34 2025 -0600                                                                                                                           
+                                                                                                                                                                
+    fixed append block problem                                                                                                                                  
+                                                                                                                                                                
+commit 719c5ad144a0d8e1b2528777b88eab2629ba34ba                                                                                                                 
+Author: fui <fui@fui-ubuntu>                                                                                                                                    
 Date:   Mon Mar 3 18:36:42 2025 -0600                                                                                                                           
                                                                                                                                                                 
     fixed append block problem                                                                                                                                  
@@ -87,4 +101,4 @@ Author: Peter-Michael Osera <osera@cs.grinnell.edu>
 Date:   Wed Feb 26 09:31:55 2025 -0600                                                                                                                          
                                                                                                                                                                 
     initial commit                                                                                                                                              
-(END) 
+(END)                                                                                                                                                           
