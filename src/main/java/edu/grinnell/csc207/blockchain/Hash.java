@@ -48,7 +48,7 @@ public class Hash {
     
         String hashString = "";
         for (int i = 0; i < this.hash.length; i++) {
-            hashString += String.format("%d", Byte.toUnsignedInt(this.hash[i]));
+            hashString += String.format("%02x", Byte.toUnsignedInt(this.hash[i]));
         }
         return hashString;
     }
