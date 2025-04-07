@@ -4,69 +4,99 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 /**
- * The main driver for the block chain program.
+ * The main driver for the blockchain program.
  */
 public class BlockChainDriver {
-   
+
     /**
      * The main entry point for the program.
+     * 
      * @param args the command-line arguments
-     * @throws java.security.NoSuchAlgorithmException
+     * @throws NoSuchAlgorithmException if an algorithm is not found during mining
      */
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        if (args.length != 1){
-            System.out.println("invalid input! Takes in one arguement which is the initial balance!");
+        // Check for correct input
+        if (args.length != 1) {
+            System.out.println("Invalid input! Takes in one argument which is the initial balance!");
         } else {
-            int bal = Integer.parseInt(args[0]);
-            BlockChain chain = new BlockChain(bal);
-            
+            // Initialize blockchain with the given balance
+            int balance = Integer.parseInt(args[0]);
+            BlockChain chain = new BlockChain(balance);
+
             boolean running = true;
-            while(running){
+            Scanner scanner = new Scanner(System.in);
+
+            // Main loop for processing user commands
+            while (running) {
                 System.out.println();
                 System.out.println(chain.toString());
-                Scanner scanner = new Scanner(System.in);
                 System.out.print("Command? ");
                 String input = scanner.nextLine();
-                
-                if (null != input)switch (input) {
-                    case "mine" -> {
-                        System.out.print("Ammount Transfered? ");
-                        int amm = Integer.parseInt(scanner.nextLine());
-                        long nonce = chain.mine(amm).getNonce();
-                        System.out.println("ammount = " + amm + ", nonce = " + nonce);
-                        }
-                    case "append" -> {
-                        System.out.print("Ammount Transfered? ");
-                        int amm = Integer.parseInt(scanner.nextLine());
-                        System.out.print("Nonce? ");
-                        long nonce = Long.parseLong(scanner.nextLine());
-                        Block newBlock = new Block(chain.getSize(), amm, chain.last.block.getHash(), nonce);
-                        newBlock.mine();
-                        chain.append(newBlock);
-                        }
-                    case "remove" -> chain.removeLast();
-                    case "check" -> {
-                        if (chain.isValidBlockChain()){
-                            System.out.println("Chain is valid!");
-                        } else {
-                            System.out.println("Chain is invalid!");
-                        }
-                    }
-                    case "report" -> chain.printBalances();
-                    case "help" -> {
-                        System.out.println("Valid commands:");
-                        System.out.println('\t' + "mine: discovers the nonce for a given transaction");
-                        System.out.println('\t' + "append: appends a new block onto the end of the chain");
-                        System.out.println('\t' + "remove: removes the last block from the end of the chain");
-                        System.out.println('\t' + "report: reports the balances of Alice and Bob");
-                        System.out.println('\t' + "help: prints this list of commands");
-                        System.out.println('\t' + "quit: quits the program");
-                    }
-                    case "quit" -> running = false;
-                    default -> {
+
+                if (input != null) {
+                    switch (input) {
+                        case "mine":
+                            System.out.print("Amount Transferred? ");
+                            int amount = Integer.parseInt(scanner.nextLine());
+                            long nonce = chain.mine(amount).getNonce();
+                            System.out.println("Amount = " + amount + ", Nonce = " + nonce);
+                            break;
+
+                        case "append":
+                            System.out.print("Amount Transferred? ");
+                            amount = Integer.parseInt(scanner.nextLine());
+                            System.out.print("Nonce? ");
+                            nonce = Long.parseLong(scanner.nextLine());
+                            Block newBlock = new Block(chain.getSize(), amount, chain.last.block.getHash(), nonce);
+                            newBlock.mine();
+                            chain.append(newBlock);
+                            break;
+
+                        case "remove":
+                            chain.removeLast();
+                            break;
+
+                        case "check":
+                            if (chain.isValidBlockChain()) {
+                                System.out.println("Chain is valid!");
+                            } else {
+                                System.out.println("Chain is invalid!");
+                            }
+                            break;
+
+                        case "report":
+                            chain.printBalances();
+                            break;
+
+                        case "help":
+                            printHelp();
+                            break;
+
+                        case "quit":
+                            running = false;
+                            break;
+
+                        default:
+                            System.out.println("Invalid command. Type 'help' for a list of valid commands.");
+                            break;
                     }
                 }
             }
+
+            scanner.close();
         }
-    }  
+    }
+
+    /**
+     * Prints a list of valid commands to the user.
+     */
+    private static void printHelp() {
+        System.out.println("Valid commands:");
+        System.out.println("\tmine: discovers the nonce for a given transaction");
+        System.out.println("\tappend: appends a new block onto the end of the chain");
+        System.out.println("\tremove: removes the last block from the end of the chain");
+        System.out.println("\treport: reports the balances of Alice and Bob");
+        System.out.println("\thelp: prints this list of commands");
+        System.out.println("\tquit: quits the program");
+    }
 }
