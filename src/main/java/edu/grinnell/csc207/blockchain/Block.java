@@ -56,10 +56,7 @@ public final class Block {
         long testNonce = 0;
         
         while (!this.hash.isValid()) {
-            ByteBuffer buffer = ByteBuffer.allocate(100)
-                                         .putInt(this.num)
-                                         .putInt(this.data)
-                                         .putLong(testNonce);
+            ByteBuffer buffer = ByteBuffer.allocate(100).putInt(this.num).putInt(this.data).putLong(testNonce);
             
             if (this.prev != null) {
                 buffer.put(this.prev.getData());
@@ -80,10 +77,7 @@ public final class Block {
      */
     public Hash convertHash() throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("sha-256");
-        ByteBuffer buffer = ByteBuffer.allocate(100)
-                                     .putInt(this.num)
-                                     .putInt(this.data)
-                                     .putLong(this.nonce);
+        ByteBuffer buffer = ByteBuffer.allocate(100).putInt(this.num).putInt(this.data).putLong(this.nonce);
         
         if (this.prev != null) {
             buffer.put(this.prev.getData());
@@ -135,7 +129,8 @@ public final class Block {
     @Override
     public String toString() {
         String blockString = "Block " + this.num + "(Amount: " + this.data + ", Nonce: " + this.nonce
-                             + ", prevHash: " + this.prev + ", hash: " + this.hash + ")";
+                     + ", prevHash: " + this.prev + ", hash: " + this.hash + ")";
+
         return blockString;
     }
 }
