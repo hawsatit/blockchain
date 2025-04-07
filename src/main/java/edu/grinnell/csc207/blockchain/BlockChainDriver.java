@@ -79,7 +79,8 @@ public class BlockChainDriver {
                             break;
 
                         default:
-                            System.out.println("Invalid command. Type 'help' for a list of valid commands.");
+                            System.out.println("Invalid command." + 
+                                    " Type 'help' for a list of valid commands.");
                             break;
                     }
                 }
