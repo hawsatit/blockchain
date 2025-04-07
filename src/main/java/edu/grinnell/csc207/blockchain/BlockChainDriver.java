@@ -17,7 +17,8 @@ public class BlockChainDriver {
     public static void main(String[] args) throws NoSuchAlgorithmException {
         // Check for correct input
         if (args.length != 1) {
-            System.out.println("Invalid input! Takes in one argument which is the initial balance!");
+            System.out.println("Invalid input! Takes in one argument which is "
+                               + "the initial balance!");
         } else {
             // Initialize blockchain with the given balance
             int balance = Integer.parseInt(args[0]);
