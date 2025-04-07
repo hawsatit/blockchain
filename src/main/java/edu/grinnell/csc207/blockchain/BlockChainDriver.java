@@ -47,7 +47,8 @@ public class BlockChainDriver {
                             amount = Integer.parseInt(scanner.nextLine());
                             System.out.print("Nonce? ");
                             nonce = Long.parseLong(scanner.nextLine());
-                            Block newBlock = new Block(chain.getSize(), amount, chain.last.block.getHash(), nonce);
+                            Block newBlock = new Block(chain.getSize(), amount, 
+                                chain.last.block.getHash(), nonce);
                             newBlock.mine();
                             chain.append(newBlock);
                             break;
